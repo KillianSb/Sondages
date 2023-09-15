@@ -28,6 +28,10 @@ li {
     text-align: center;
 }
 
+a {
+    text-decoration: none;
+}
+
 li a {
     color: #159f83;
     text-shadow: 0 1px 0 black;

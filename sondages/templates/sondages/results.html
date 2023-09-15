@@ -13,6 +13,11 @@
     {% endfor %}
     </ul>
 
+    <button>
     <a href="{% url 'sondages:detail' question.id %}">Voter à nouveau ?</a>
+    </button>
+    <button>
+        <a href="{% url 'sondages:index' %}">Retour Accueil</a>
+    </button>
 </body>
 </html>

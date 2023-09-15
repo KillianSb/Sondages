@@ -1,9 +1,18 @@
-{% if latest_question_list %}
-    <ul>
-    {% for question in latest_question_list %}
-        <li><a href="{% url 'sondages:detail' question.id %}">{{ question.question_text }}</a></li>
-    {% endfor %}
-    </ul>
-{% else %}
-    <p>Aucun sondage n'est disponible.</p>
-{% endif %}
+{% load static %}
+
+<link rel="stylesheet" href="{% static 'sondages/style.css' %}">
+
+<div class="blockSondages">
+    <h1>Liste des sondages</h1>
+    <div class="Sondages">
+        {% if latest_question_list %}
+        <ul>
+            {% for question in latest_question_list %}
+                <li><a href="{% url 'sondages:detail' question.id %}">{{ question.question_text }}</a></li>
+            {% endfor %}
+        </ul>
+        {% else %}
+            <p>Aucun sondage n'est disponible.</p>
+        {% endif %}
+    </div>
+</div>

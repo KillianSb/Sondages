@@ -1,0 +1,47 @@
+.blockSondages {
+    margin: 2vh;
+    display: block;
+}
+
+.Sondages {
+    margin: 2vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+h1 {
+    display: flex;
+    justify-content: center;
+    font-size: xxx-large;
+}
+
+ul {
+    padding: 0;
+}
+
+li {
+    list-style-type: none;
+    margin: 1vh;
+    padding: 0.5vh;
+    text-align: center;
+}
+
+li a {
+    color: #159f83;
+    text-shadow: 0 1px 0 black;
+    text-decoration: none;
+    font-size: x-large;
+}
+
+li a:hover {
+    color: #0dd7af;
+    text-shadow: 0 1px 0 black;
+    text-decoration: none;
+    font-size: 25px;
+}
+
+body {
+    background: white url("images/background.png") no-repeat;
+}

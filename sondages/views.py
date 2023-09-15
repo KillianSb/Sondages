@@ -3,6 +3,7 @@
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import get_object_or_404, render
 from django.urls import reverse
+from django.utils import timezone
 from django.views import generic
 
 from sondages.models import Question, Choice
@@ -13,12 +14,23 @@ class IndexView(generic.ListView):
     context_object_name = "latest_question_list"
 
     def get_queryset(self):
-        """Renvoyez les cinq dernières questions publiées."""
-        return Question.objects.order_by("-pub_date")[:5]
+        """
+        Renvoie les cinq dernières questions publiées (sans compter celles qui doivent être
+        publié à l’avenir).
+        """
+        return Question.objects.filter(pub_date__lte=timezone.now()).order_by("-pub_date")[
+            :5
+        ]
 
 class DetailView(generic.DetailView):
     model = Question
     template_name = "sondages/detail.html"
+
+    """
+    Exclut toutes les questions qui ne sont pas encore publiées.
+    """
+    def get_queryset(self):
+        return Question.objects.filter(pub_date__lte=timezone.now())
 
 class ResultsView(generic.DetailView):
     model = Question
